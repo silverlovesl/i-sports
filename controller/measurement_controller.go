@@ -20,8 +20,8 @@ func NewMeasurementController() *MeasurementController {
 	}
 }
 
-// Measurement [TODO:Comment]
-func (mc *MeasurementController) Measurement(c echo.Context) error {
+// GetMeasurements [TODO:Comment]
+func (mc *MeasurementController) GetMeasurements(c echo.Context) error {
 	userID, err := strconv.Atoi(c.Param("userId"))
 	if err != nil {
 		return c.String(http.StatusInternalServerError, "Invalid userId")

@@ -3,19 +3,21 @@ package service
 import "i-sports/model"
 import "i-sports/store"
 
+// ProfileService [TODO:Comment]
 type ProfileService struct {
 	ProfileAccessor *store.ProfileAccessor
 }
 
+// NewProfileService [TODO:Comment]
 func NewProfileService() *ProfileService {
 	return &ProfileService{
 		ProfileAccessor: store.NewProfileAccessor(),
 	}
 }
 
-// Login [TODO:Comment]
-func (ps *ProfileService) Login(loginID string, password string) model.Profile {
-	entProfile := ps.ProfileAccessor.Login(loginID, password)
+// DoLogin [TODO:Comment]
+func (ps *ProfileService) DoLogin(loginID string, password string) model.Profile {
+	entProfile := ps.ProfileAccessor.DoLogin(loginID, password)
 	return model.Profile{
 		ID:       entProfile.ID,
 		Name:     entProfile.Name,
@@ -27,8 +29,8 @@ func (ps *ProfileService) Login(loginID string, password string) model.Profile {
 	}
 }
 
-// Profile [TODO:Comment]
-func (ps *ProfileService) Profile(id int) model.Profile {
+// GetProfile [TODO:Comment]
+func (ps *ProfileService) GetProfile(id int) model.Profile {
 	entProfile := ps.ProfileAccessor.GetProfile(id)
 	return model.Profile{
 		ID:       entProfile.ID,

@@ -21,9 +21,9 @@ func initRouter() {
 	g := e.Group("/api/v1")
 	ctrlProfile := controller.NewProfileController()
 	ctrlMeasure := controller.NewMeasurementController()
-	g.POST("/login", ctrlProfile.Login)
-	g.GET("/profile/:id", ctrlProfile.Profile)
-	g.GET("/measure/:userId", ctrlMeasure.Measurement)
+	g.POST("/login", ctrlProfile.DoLogin)
+	g.GET("/profile/:id", ctrlProfile.GetProfile)
+	g.GET("/measure/:userId", ctrlMeasure.GetMeasurements)
 	e.Logger.Fatal(e.Start(":3000"))
 }
 

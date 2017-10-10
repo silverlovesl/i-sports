@@ -5,14 +5,16 @@ import (
 	"i-sports/util"
 )
 
+// ProfileAccessor [TODO:Comment]
 type ProfileAccessor struct {
 }
 
+// NewProfileAccessor [TODO:Comment]
 func NewProfileAccessor() *ProfileAccessor {
 	return &ProfileAccessor{}
 }
 
-// GetProfile [GetProfile]
+// GetProfile [TODO:Comment]
 func (pa *ProfileAccessor) GetProfile(id int) entity.Profile {
 
 	var profile entity.Profile
@@ -21,8 +23,8 @@ func (pa *ProfileAccessor) GetProfile(id int) entity.Profile {
 	return profile
 }
 
-// Login [Comment]
-func (pa *ProfileAccessor) Login(loginID string, password string) entity.Profile {
+// DoLogin [TODO:Comment]
+func (pa *ProfileAccessor) DoLogin(loginID string, password string) entity.Profile {
 	var profile entity.Profile
 	engine := util.GetEngine()
 	engine.Table("profile").Where("email = ? and password = ?", loginID, password).Find(&profile)
