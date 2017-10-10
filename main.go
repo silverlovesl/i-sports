@@ -19,8 +19,9 @@ func main() {
 func initRouter() {
 	e := echo.New()
 	g := e.Group("/api/v1")
-	ctrlProfile := controller.NewProfileController()
-	ctrlMeasure := controller.NewMeasurementController()
+	ctrlProfile := controller.GetProfileController()
+	ctrlMeasure := controller.GetMeasurementController()
+
 	g.POST("/login", ctrlProfile.DoLogin)
 	g.GET("/profile/:id", ctrlProfile.GetProfile)
 	g.GET("/measure/:userId", ctrlMeasure.GetMeasurements)

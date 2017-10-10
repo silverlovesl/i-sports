@@ -9,23 +9,21 @@ import (
 )
 
 // MeasurementController [TODO:Comment]
-type MeasurementController struct {
-	MeasurementService *service.MeasurementService
-}
+type measurementController struct{}
 
-// NewMeasurementController [TODO:Comment]
-func NewMeasurementController() *MeasurementController {
-	return &MeasurementController{
-		MeasurementService: service.NewMeasurementService(),
-	}
+var measurementControllerIns = new(measurementController)
+
+// GetMeasurementController [TODO:Comment]
+func GetMeasurementController() *measurementController {
+	return measurementControllerIns
 }
 
 // GetMeasurements [TODO:Comment]
-func (mc *MeasurementController) GetMeasurements(c echo.Context) error {
+func (mc *measurementController) GetMeasurements(c echo.Context) error {
 	userID, err := strconv.Atoi(c.Param("userId"))
 	if err != nil {
 		return c.String(http.StatusInternalServerError, "Invalid userId")
 	}
-	measurements := mc.MeasurementService.GetMeasurements(userID)
+	measurements := service.GetMeasurementService().GetMeasurements(userID)
 	return c.JSON(http.StatusOK, WrapArray(measurements))
 }

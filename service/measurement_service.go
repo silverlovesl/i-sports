@@ -6,22 +6,20 @@ import (
 )
 
 // MeasurementService [TODO:Comment]
-type MeasurementService struct {
-	MeasurementAccessor *store.MeasurementAccessor
-}
+type measurementService struct{}
 
-// NewMeasurementService [TODO:Comment]
-func NewMeasurementService() *MeasurementService {
-	return &MeasurementService{
-		MeasurementAccessor: store.NewMeasurementAccessor(),
-	}
+var measurementServiceIns = new(measurementService)
+
+// GetMeasurementService [TODO:Comment]
+func GetMeasurementService() *measurementService {
+	return measurementServiceIns
 }
 
 // GetMeasurements [TODO:Comment]
-func (mc *MeasurementService) GetMeasurements(userID int) []model.Measurement {
+func (mc *measurementService) GetMeasurements(userID int) []model.Measurement {
 
 	var measurements []model.Measurement
-	entMeasurement := mc.MeasurementAccessor.GetMeasurements(userID)
+	entMeasurement := store.GetMeasurementAccessor().GetMeasurements(userID)
 
 	for _, v := range entMeasurement {
 		measurements = append(measurements, model.Measurement{

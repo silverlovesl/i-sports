@@ -6,16 +6,18 @@ import (
 )
 
 // MeasurementAccessor [Comment]
-type MeasurementAccessor struct {
+type measurementAccessor struct {
 }
 
-// NewMeasurementAccessor [Comment]
-func NewMeasurementAccessor() *MeasurementAccessor {
-	return &MeasurementAccessor{}
+var measurementAccessorIns = new(measurementAccessor)
+
+// GetMeasurementAccessor [Comment]
+func GetMeasurementAccessor() *measurementAccessor {
+	return measurementAccessorIns
 }
 
 // GetMeasurements 測定データ取得
-func (ma *MeasurementAccessor) GetMeasurements(userID int) []entity.Measurement {
+func (ma *measurementAccessor) GetMeasurements(userID int) []entity.Measurement {
 
 	var measurements []entity.Measurement
 	engine := util.GetEngine()

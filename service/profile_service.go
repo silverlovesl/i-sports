@@ -1,23 +1,29 @@
 package service
 
-import "i-sports/model"
-import "i-sports/store"
+import (
+	"fmt"
+	"i-sports/model"
+	"i-sports/store"
+	"time"
+)
 
 // ProfileService [TODO:Comment]
-type ProfileService struct {
-	ProfileAccessor *store.ProfileAccessor
-}
+type profileService struct{}
 
-// NewProfileService [TODO:Comment]
-func NewProfileService() *ProfileService {
-	return &ProfileService{
-		ProfileAccessor: store.NewProfileAccessor(),
+var profileServiceIns = new(profileService)
+
+// GetProfileServiceIns [TODO:Comment]
+func GetProfileServiceIns() *profileService {
+	if profileServiceIns == nil {
+		time.Sleep(1 * time.Second)
+		fmt.Println("A new profileService has been create ")
 	}
+	return profileServiceIns
 }
 
 // DoLogin [TODO:Comment]
-func (ps *ProfileService) DoLogin(loginID string, password string) model.Profile {
-	entProfile := ps.ProfileAccessor.DoLogin(loginID, password)
+func (ps *profileService) DoLogin(loginID string, password string) model.Profile {
+	entProfile := store.GetProfileAccessorIns().DoLogin(loginID, password)
 	return model.Profile{
 		ID:       entProfile.ID,
 		Name:     entProfile.Name,
@@ -30,8 +36,8 @@ func (ps *ProfileService) DoLogin(loginID string, password string) model.Profile
 }
 
 // GetProfile [TODO:Comment]
-func (ps *ProfileService) GetProfile(id int) model.Profile {
-	entProfile := ps.ProfileAccessor.GetProfile(id)
+func (ps *profileService) GetProfile(id int) model.Profile {
+	entProfile := store.GetProfileAccessorIns().GetProfile(id)
 	return model.Profile{
 		ID:       entProfile.ID,
 		Name:     entProfile.Name,
