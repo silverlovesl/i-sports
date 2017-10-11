@@ -2,8 +2,8 @@ package store
 
 import (
 	"fmt"
-	"i-sports/entity"
-	"i-sports/util"
+	"i-sports-backend/entity"
+	"i-sports-backend/util"
 	"time"
 )
 

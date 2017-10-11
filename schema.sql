@@ -1,5 +1,5 @@
-drop database if exists sports;
-create database sports;
+-- drop database if exists sports;
+-- create database sports;
 
 drop table if exists profile;
 create table profile

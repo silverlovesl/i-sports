@@ -2,7 +2,7 @@ package controller
 
 import (
 	"fmt"
-	"i-sports/service"
+	"i-sports-backend/service"
 	"net/http"
 	"strconv"
 	"time"

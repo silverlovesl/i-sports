@@ -2,8 +2,8 @@ package service
 
 import (
 	"fmt"
-	"i-sports/model"
-	"i-sports/store"
+	"i-sports-backend/model"
+	"i-sports-backend/store"
 	"time"
 )
 

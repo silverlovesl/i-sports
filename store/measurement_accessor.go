@@ -1,8 +1,8 @@
 package store
 
 import (
-	"i-sports/entity"
-	"i-sports/util"
+	"i-sports-backend/entity"
+	"i-sports-backend/util"
 )
 
 // MeasurementAccessor [Comment]

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"i-sports/service"
+	"i-sports-backend/service"
 	"net/http"
 	"strconv"
 

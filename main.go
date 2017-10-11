@@ -1,8 +1,8 @@
 package main
 
 import (
-	"i-sports/controller"
-	"i-sports/util"
+	"i-sports-backend/controller"
+	"i-sports-backend/util"
 	"net/http"
 
 	"github.com/go-xorm/xorm"
